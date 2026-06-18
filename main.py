@@ -1,5 +1,5 @@
 # IMPORTAMOS LOS MODULOS DEL PROYECTO
-
+import os
 import archivos
 import operaciones
 import filtros
@@ -7,8 +7,10 @@ import estadisticas
 
 
 # Nombre del archivo CSV donde se guardan los paises
-ARCHIVO = "paises.csv"
-
+ARCHIVO = os.path.join(
+    os.path.dirname(__file__),
+    "paises.csv"
+)
 
 # Cargamos los datos al iniciar el programa
 paises = archivos.cargar_csv(ARCHIVO)

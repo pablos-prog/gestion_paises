@@ -1,6 +1,46 @@
 # MODULO DE FILTROS Y ORDENAMIENTOS
 # Contiene funciones para filtrar y ordenar paises
 
+# funcion para mostrar los paises de un continente
+def filtrar_continente(paises):
+
+# solicita el continente a buscar
+    continente = input(
+        "Ingrese el continente: "
+    )
+
+# convierte el texto a minusculas
+# para facilitar la comparacion
+    continente = continente.lower()
+
+# variable para saber si hubo resultados
+    encontrado = False
+
+    print("\nResultados encontrados:\n")
+
+# recorre toda la lista de paises
+    for pais in paises:
+
+# compara el continente ingresado
+# con el continente de cada pais
+        if (
+            pais["continente"].lower()
+            == continente
+        ):
+
+# muestra el pais encontrado
+            print(pais)
+
+# indica que hubo coincidencias
+            encontrado = True
+
+# si no hubo resultados
+    if encontrado == False:
+
+        print(
+            "No se encontraron paises."
+        )
+
 #funcion para mostrar los paises dentro de un rango de poblacion
 def filtrar_poblacion(paises):
 
@@ -72,6 +112,81 @@ def filtrar_poblacion(paises):
 
 #muestra el pais encontrado
             print(pais)
+
+# funcion para mostrar los paises
+# dentro de un rango de superficie
+def filtrar_superficie(paises):
+
+# solicita la superficie minima
+    while True:
+
+        try:
+
+            minimo = int(
+                input(
+                    "Ingrese la superficie minima: "
+                )
+            )
+
+            if minimo >= 0:
+                break
+
+            print(
+                "Error: ingrese un valor positivo."
+            )
+
+        except ValueError:
+
+            print(
+                "Error: debe ingresar un numero entero."
+            )
+
+# solicita la superficie maxima
+    while True:
+
+        try:
+
+            maximo = int(
+                input(
+                    "Ingrese la superficie maxima: "
+                )
+            )
+
+            if maximo >= minimo:
+                break
+
+            print(
+                "Error: debe ser mayor o igual al minimo."
+            )
+
+        except ValueError:
+
+            print(
+                "Error: debe ingresar un numero entero."
+            )
+
+    print("\nResultados encontrados:\n")
+
+# variable para saber si hubo resultados
+    encontrado = False
+
+# recorre todos los paises
+    for pais in paises:
+
+# verifica si la superficie
+# esta dentro del rango
+        if minimo <= pais["superficie"] <= maximo:
+
+            print(pais)
+
+            encontrado = True
+
+# si no hubo coincidencias
+    if encontrado == False:
+
+        print(
+            "No se encontraron paises."
+        )
 
 
 #funcion para ordenar los paises alfabeticamente por nombre
